@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "스토어 재고 보기",
+  "version": "0.1.0",
+  "description": "스토어 페이지에서 상품 재고 정보를 보여줍니다.",
+  "permissions": [
+    "contextMenus",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://brand.naver.com/*",
+    "https://smartstore.naver.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://brand.naver.com/*",
+        "https://smartstore.naver.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
