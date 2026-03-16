@@ -2,7 +2,7 @@
 
 `brand.naver.com` 및 `smartstore.naver.com` 상품 목록 페이지에서 재고를 확인할 수 있도록 도와주는 Chrome Extension (Manifest V3)입니다.
 
-이 확장 프로그램은 페이지의 `window.__PRELOADED_STATE__.categoryProducts.simpleProducts` 데이터를 읽어 다음 기능을 제공합니다.
+이 확장 프로그램은 페이지의 `window.__PRELOADED_STATE__` 데이터를 읽어 다음 기능을 제공합니다.
 
 - 우클릭 메뉴 `상품정보 모아보기`
 - 우클릭 메뉴 `재고 확인하기`
