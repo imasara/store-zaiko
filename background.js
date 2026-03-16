@@ -4,7 +4,12 @@ const SUPPORTED_ORIGINS = [
   "https://brand.naver.com",
   "https://smartstore.naver.com"
 ];
+/*
+TODO 상세 페이지용
+제품상세페이지 https://smartstore.naver.com/gsc_korea_dt_bh/products/13035299663
+window.__PRELOADED_STATE__.simpleProductForDetailPage.A
 
+* */
 function isSupportedPageUrl(pageUrl) {
   return SUPPORTED_ORIGINS.some((origin) => pageUrl.startsWith(`${origin}/`));
 }
@@ -152,13 +157,21 @@ function extractProductRows() {
   }
 
   const state = window.__PRELOADED_STATE__;
-  const simpleProducts = state?.categoryProducts?.simpleProducts;
+  const simpleProductsFull = (()=> {
+    const a = state?.categoryProducts?.simpleProducts;
+    return Array.isArray(a) ? a : [];
+  })();
+  const simpleProductsSearched = (()=> {
+    const a = state?.keywordSearch?.A?.simpleProducts;
+    return Array.isArray(a) ? a : [];
+  })();
+  const simpleProducts = simpleProductsFull.length > 0 ? simpleProductsFull : simpleProductsSearched;
   const baseStoreUrl = extractBaseStoreUrl(window.location.href);
 
   if (!Array.isArray(simpleProducts) || simpleProducts.length === 0) {
     return {
       ok: false,
-      message: "categoryProducts.simpleProducts 데이터를 찾을 수 없습니다.",
+      message: "simpleProducts 데이터를 찾을 수 없습니다.",
       items: []
     };
   }
