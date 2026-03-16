@@ -5,11 +5,8 @@ const SUPPORTED_ORIGINS = [
   "https://smartstore.naver.com"
 ];
 /*
-TODO 상세 페이지용
-제품상세페이지 https://smartstore.naver.com/gsc_korea_dt_bh/products/13035299663
-window.__PRELOADED_STATE__.simpleProductForDetailPage.A
-
-* */
+TODO 상세 페이지
+*/
 function isSupportedPageUrl(pageUrl) {
   return SUPPORTED_ORIGINS.some((origin) => pageUrl.startsWith(`${origin}/`));
 }
